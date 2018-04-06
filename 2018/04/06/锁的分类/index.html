@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.2 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            锁的分类 | 
+        
+        Chao Zhang&#39;s way
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Chao Zhang">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null,Java">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Chao Zhang&#39;s way">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="锁的分类 | Chao Zhang&#39;s way">
+    <meta property="og:description" content="null">
+    <meta property="og:article:tag" content="Java"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#锁的概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">锁的概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么需要锁"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">为什么需要锁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#锁的定义"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">锁的定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#锁的分类"><span class="post-toc-number">2.</span> <span class="post-toc-text">锁的分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自旋锁和阻塞锁"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自旋锁和阻塞锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自旋锁（SpinLock）"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">自旋锁（SpinLock）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自旋锁的定义"><span class="post-toc-number">2.1.1.1.</span> <span class="post-toc-text">自旋锁的定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自旋锁的适用范围"><span class="post-toc-number">2.1.1.2.</span> <span class="post-toc-text">自旋锁的适用范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自旋锁存在的问题"><span class="post-toc-number">2.1.1.3.</span> <span class="post-toc-text">自旋锁存在的问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自旋锁的一种实现——CAS机制"><span class="post-toc-number">2.1.1.4.</span> <span class="post-toc-text">自旋锁的一种实现——CAS机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CAS简述"><span class="post-toc-number">2.1.1.4.1.</span> <span class="post-toc-text">CAS简述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CAS定义"><span class="post-toc-number">2.1.1.4.1.1.</span> <span class="post-toc-text">CAS定义</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CAS原理"><span class="post-toc-number">2.1.1.4.1.2.</span> <span class="post-toc-text">CAS原理</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Java中的CAS实现——Unsafe类"><span class="post-toc-number">2.1.1.4.2.</span> <span class="post-toc-text">Java中的CAS实现——Unsafe类</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Java中自旋锁的应用——java-util-concurrent-atomic包"><span class="post-toc-number">2.1.1.4.3.</span> <span class="post-toc-text">Java中自旋锁的应用——java.util.concurrent.atomic包</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#CAS存在的问题——ABA"><span class="post-toc-number">2.1.1.4.4.</span> <span class="post-toc-text">CAS存在的问题——ABA</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自旋锁参考"><span class="post-toc-number">2.1.1.5.</span> <span class="post-toc-text">自旋锁参考</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#公平锁和非公平锁"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">公平锁和非公平锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#公平锁"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">公平锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非公平锁"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">非公平锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#公平锁和非公平锁的特点"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">公平锁和非公平锁的特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#公平锁与非公平锁的使用场景"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">公平锁与非公平锁的使用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可重入锁与不可重入锁"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">可重入锁与不可重入锁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#独占锁和共享锁"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">独占锁和共享锁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#互斥锁和读写锁"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">互斥锁和读写锁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#乐观锁和悲观锁"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">乐观锁和悲观锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#乐观锁和悲观锁的适用场景"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">乐观锁和悲观锁的适用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分段锁"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">分段锁</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#synchronized的锁升级机制——偏向锁、轻量级锁、重量级锁"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">synchronized的锁升级机制——偏向锁、轻量级锁、重量级锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一阶段——偏向锁"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">第一阶段——偏向锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二阶段——轻量级锁"><span class="post-toc-number">2.8.2.</span> <span class="post-toc-text">第二阶段——轻量级锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三阶段——重量级锁"><span class="post-toc-number">2.8.3.</span> <span class="post-toc-text">第三阶段——重量级锁</span></a></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/标题图片汇总/castle-3215572_1920.jpg)">
+    
+            <p class="article-headline-p">
+                锁的分类
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Chao Zhang</strong>
+        <span>4月 06, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java/">Java</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=锁的分类&url=http://yoursite.com//2018/04/06/锁的分类/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=锁的分类&url=http://yoursite.com//2018/04/06/锁的分类/index.html&via=Chao Zhang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/04/06/锁的分类/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/04/06/锁的分类/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="锁的概述"><a href="#锁的概述" class="headerlink" title="锁的概述"></a>锁的概述</h1><h2 id="为什么需要锁"><a href="#为什么需要锁" class="headerlink" title="为什么需要锁"></a>为什么需要锁</h2><p>在并发环境中，有些<strong>资源被共享（临界资源）</strong>，这时需要一种对临界资源访问的同步机制。锁的机制，正是为了解决同步问题而引入的——只有获取了锁的进程/线程才能访问临界资源，同一时间不能两个或两个以上进程进入临界区；当进程退出临界区时，要将锁释放。</p>
+<h2 id="锁的定义"><a href="#锁的定义" class="headerlink" title="锁的定义"></a>锁的定义</h2><p>锁是一种<strong>并发程序设计</strong>中实现<strong>共享数据同步</strong>的一种工具。</p>
+<h1 id="锁的分类"><a href="#锁的分类" class="headerlink" title="锁的分类"></a>锁的分类</h1><ul>
+<li>参考：<a href="http://www.cnblogs.com/qifengshi/p/6831055.html" target="_blank" rel="noopener">Java中的锁分类</a></li>
+</ul>
+<h2 id="自旋锁和阻塞锁"><a href="#自旋锁和阻塞锁" class="headerlink" title="自旋锁和阻塞锁"></a>自旋锁和阻塞锁</h2><p>根据<strong>未获得锁的进程的状态</strong>，我们可以将锁划分为两种类型：<strong>自旋锁和阻塞锁</strong>。</p>
+<p>设计互斥算法时要考虑一个问题——没有获得锁的进程怎么办？</p>
+<p>通常有2种处理方式：自旋、阻塞。</p>
+<ul>
+<li>没有获得锁的调用者就<strong>一直循环</strong>在那里看是否该自旋锁的持有者已经释放了锁，处于<strong>忙等待</strong>的状态，这就是自旋锁。此时，线程不会被阻塞（NON-BLOCKING)；</li>
+<li>另一种是没有获得锁的进程就阻塞(BLOCKING)自己，这就是阻塞锁。</li>
+</ul>
+<h3 id="自旋锁（SpinLock）"><a href="#自旋锁（SpinLock）" class="headerlink" title="自旋锁（SpinLock）"></a>自旋锁（SpinLock）</h3><h4 id="自旋锁的定义"><a href="#自旋锁的定义" class="headerlink" title="自旋锁的定义"></a>自旋锁的定义</h4><p>如果在获取自旋锁时，没有任何执行单元保持该锁，那么将立即得到锁；如果在获取自旋锁时锁已经有保持者，那么获取锁操作将采用<strong>忙等待循环</strong>的方式等待锁的释放，直到该自旋锁被释放。</p>
+<h4 id="自旋锁的适用范围"><a href="#自旋锁的适用范围" class="headerlink" title="自旋锁的适用范围"></a>自旋锁的适用范围</h4><p>自旋锁是一种比较<strong>低级的同步方式</strong>，比较<strong>适用于锁使用者持有锁时间比较短</strong>的情况。此时，自旋等待的<strong>效率远远高</strong>于阻塞等待。</p>
+<h4 id="自旋锁存在的问题"><a href="#自旋锁存在的问题" class="headerlink" title="自旋锁存在的问题"></a>自旋锁存在的问题</h4><ul>
+<li><strong>递归死锁，自旋锁不可重入</strong><br>试图递归地获得自旋锁必然会引起<strong>死锁</strong>：递归程序的线程如果已经获得了自旋锁，进行递归的过程中，再次请求该锁，则进入了忙等待，此时便陷入了<strong>死循环中</strong>。</li>
+<li><strong>过多占用CPU资源</strong><br>因为等待自旋锁的线程采用的是<strong>循环等待</strong>的方式进行锁的请求，所以即使该线程获得了CPU的执行权，也不能继续向下执行，而是进行忙等待循环，浪费CPU资源，直到该线程的执行权被剥夺。</li>
+</ul>
+<p>因此，一般自旋锁实现会有一个<strong>参数 </strong>限定<strong>最多持续尝试次数</strong>， 超出后， <strong>自旋锁主动放弃当前时间片</strong>， 让出CPU执行权。</p>
+<p><strong>正因如此，自旋锁适用于比较短的操作中。</strong></p>
+<h4 id="自旋锁的一种实现——CAS机制"><a href="#自旋锁的一种实现——CAS机制" class="headerlink" title="自旋锁的一种实现——CAS机制"></a>自旋锁的一种实现——CAS机制</h4><h5 id="CAS简述"><a href="#CAS简述" class="headerlink" title="CAS简述"></a>CAS简述</h5><h6 id="CAS定义"><a href="#CAS定义" class="headerlink" title="CAS定义"></a>CAS定义</h6><p>CAS是自旋锁的<strong>一种实现原理</strong>，Java JDK中提供的API广泛使用了该机制进行自旋锁的编写。<br>具体来说，CAS是一种<strong>系统原语</strong>，是<code>硬件层面</code>提供的一个功能。</p>
+<blockquote>
+<p>所谓原语属于操作系统用语范畴。原语由若干条指令组成的，用于完成一定功能的一个过程，是由若干个机器指令构成的完成某种特定功能的一段程序，具有<strong>不可分割性</strong>——即原语的执行必须是连续的，在执行过程中不允许被中断。</p>
+</blockquote>
+<p>CAS是<code>Compare And Set</code>的缩写。CAS有3个操作数VAB：</p>
+<ul>
+<li>内存地址值V，存储的是内存的地址，用于找到被CAS操作的变量。</li>
+<li>旧的预期值A，<strong>本线程所认识到的</strong>变量的最新的值。</li>
+<li>要修改的新值B，也即操作后已经修改过的、待存入变量中的值。</li>
+</ul>
+<h6 id="CAS原理"><a href="#CAS原理" class="headerlink" title="CAS原理"></a>CAS原理</h6><p>每次要修改变量的时候，会先读取内存地址为V的变量的当前值CurValue，当且仅当预期值A和CurValue相同时，才会将该变量的值修改为修改为B；否则，将预期值A修改为CurValue，重新计算B，进入下一轮次的循环，再次尝试写入。</p>
+<h5 id="Java中的CAS实现——Unsafe类"><a href="#Java中的CAS实现——Unsafe类" class="headerlink" title="Java中的CAS实现——Unsafe类"></a>Java中的CAS实现——Unsafe类</h5><p><code>sun.misc.Unsafe</code>是JDK里面的一个内部类，这个类被JDK严格保护，一般来说，<strong>只有被BootStrap ClassLoader加载的类中才允许调用该类的方法</strong>。<br>这是因为这个类提供了大量的<strong>底层的内存操作和系统功能</strong>，如果因为错误的使用了这个类，不会有“异常”被扔出，甚至会造成<strong>JVM宕机</strong>。这也是为什么这个类的名字是Unsafe的原因。</p>
+<h5 id="Java中自旋锁的应用——java-util-concurrent-atomic包"><a href="#Java中自旋锁的应用——java-util-concurrent-atomic包" class="headerlink" title="Java中自旋锁的应用——java.util.concurrent.atomic包"></a>Java中自旋锁的应用——<code>java.util.concurrent.atomic</code>包</h5><ul>
+<li>JDK 1.5提供的<code>java.util.concurrent.atomic</code>包中的类大量使用了CAS操作实现了同步。</li>
+<li>因为该包提供的类都是一些<strong>短小精悍的类</strong>，比如<code>AtomicInteger</code>、<code>AtomicIntegerArray</code>等等，这些类的提供的<strong>操作非常简短</strong>，比如自增、加减法等等，使用CAS进行加锁是非常<strong>合适</strong>的。</li>
+<li>还可以使用<code>AtomicReference</code>类来引用对象，<strong>实现自己的自旋锁机制</strong>。</li>
+</ul>
+<h5 id="CAS存在的问题——ABA"><a href="#CAS存在的问题——ABA" class="headerlink" title="CAS存在的问题——ABA"></a>CAS存在的问题——ABA</h5><ul>
+<li>解决ABA问题，使用的是<strong>版本号</strong>的方式。</li>
+<li>使用带有时间戳的对象引用<code>AtomicStampedReference</code>而不是<code>AtomicReference</code>来进行对象的引用。</li>
+</ul>
+<blockquote>
+<p>AtomicStampedReference正是这么做的。它内部不仅维护了对象值，还维护了一个时间戳（我这里把它称为时间戳，实际上它可以使任何一个整数，它使用整数来表示状态值）。当AtomicStampedReference对应的数值被修改时，除了更新数据本身外，还必须要更新时间戳。当AtomicStampedReference设置对象值时，对象值以及时间戳都必须满足期望值，写入才会成功。因此，即使对象值被反复读写，写回原值，只要时间戳发生变化，就能防止不恰当的写入。</p>
+</blockquote>
+<ul>
+<li>参考：<a href="https://blog.csdn.net/xinaij/article/details/50115511" target="_blank" rel="noopener">【实战Java高并发程序设计 3】带有时间戳的对象引用：AtomicStampedReference</a></li>
+</ul>
+<h4 id="自旋锁参考"><a href="#自旋锁参考" class="headerlink" title="自旋锁参考"></a>自旋锁参考</h4><ul>
+<li><a href="http://www.mamicode.com/info-detail-334916.html" target="_blank" rel="noopener">Java线程 - CAS自旋锁(spin-lock)</a></li>
+</ul>
+<h2 id="公平锁和非公平锁"><a href="#公平锁和非公平锁" class="headerlink" title="公平锁和非公平锁"></a>公平锁和非公平锁</h2><p>按照<strong>线程获得锁的顺序</strong>，我们可以将锁分为：公平锁和非公平锁。</p>
+<h3 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h3><p>多个线程按照<strong>申请锁的顺序</strong>，<code>FCFS</code>（先来先服务）地获得锁，或者说等待时间最长的线程优先获得锁。<br>申请锁的线程，一定会从<strong>队尾</strong>进入一个等待队列中。<br>Java的 <code>ReentrantLock</code>可以是公平或者非公平的锁，通过<strong>指定构造函数</strong>的参数为<code>true</code>设置为公平锁，默认是非公平锁。</p>
+<ul>
+<li><code>ReentrantLock</code>源码：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ReentrantLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    sync = <span class="keyword">new</span> NonfairSync();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ReentrantLock</span><span class="params">(<span class="keyword">boolean</span> fair)</span> </span>&#123;</span><br><span class="line">    sync = fair ? <span class="keyword">new</span> FairSync() : <span class="keyword">new</span> NonfairSync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="非公平锁"><a href="#非公平锁" class="headerlink" title="非公平锁"></a>非公平锁</h3><p>线程获取锁的顺序<strong>不一定按照申请锁的顺序</strong>，有可能后申请锁的线程比先申请锁的线程优先获取锁，<code>LCFS</code>（后来先服务）。</p>
+<ul>
+<li>非公平锁中存在两种行为：<ul>
+<li><strong>插队</strong><br>非公平锁上，则<strong>允许插队行为</strong>：当一个线程请求非公平锁时，如果在发出请求的同时<strong>正好</strong>该锁变成可用状态，那么这个线程无视等待队列而直接获得锁。</li>
+<li><strong>排队</strong><br>非公平锁上，只有当某个锁当前已经被占用时，申请该锁的线程才会从<strong>队尾</strong>加入到等待队列中（排队）。</li>
+</ul>
+</li>
+</ul>
+<p><code>synchronized</code>是一种非公平锁，这是因为它并不像<code>ReentrantLock</code>是通过<code>AQS</code>的来实现线程调度，所以并没有任何办法使其变成公平锁。</p>
+<h3 id="公平锁和非公平锁的特点"><a href="#公平锁和非公平锁的特点" class="headerlink" title="公平锁和非公平锁的特点"></a>公平锁和非公平锁的特点</h3><ol>
+<li><p><strong>非公平锁的优点在于吞吐量比公平锁大——见缝插针的“双赢”。</strong></p>
+<ul>
+<li>非公平锁的吞吐量比公平锁高<code>5~10倍</code>，因为公平锁需要需要维护一个锁的等待队列。所谓<strong>吞吐量</strong>，用于衡量单位时间完成任务的数量。</li>
+<li><strong>非公平锁性能高于公平锁性能的<code>原因</code>：</strong><ol>
+<li><strong>从开始恢复一个被挂起的<code>线程A</code>到该线程真正能够运行之间存在着严重的延迟。</strong><br>在这个延迟的间隙，可能正好另一个<code>线程B</code>申请锁并立即获得锁（插队），并且很可能赶在A线程被唤醒之前完成操作并释放锁。<br>此时，<strong>“双赢”的局面产生了</strong>，A既可以正常地被唤醒并执行，B又可以<strong>见缝插针</strong>地充分利用延迟的间隙，因此极大提高了吞吐量。</li>
+<li><strong>公平锁并不能保证线程调度的公平性</strong>，所以公平锁中可能存在<strong>无效的线程调度现象</strong>。<br>比如，某线程释放了锁，线程调度程序调度了锁的等待队列中<strong>非队首</strong>的线程。但此时，由于锁的公平性保证，该线程不允许获得锁，因此只能释放执行权。于是，这一次的调度便是“无效的调度”。<br>由此可见，<strong>公平锁的使用，并不能保证等待队列的队首元素优先获得执行权。</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>非公平锁会产生优先级反转或者饥饿现象。</strong></p>
+<ul>
+<li>因为存在插队现象，所以可能导致一些线程<strong>长时间得不到服务而产生饥饿现象</strong>，也可能导致一些优先级高的线程不能优先获得锁。</li>
+</ul>
+</li>
+</ol>
+<h3 id="公平锁与非公平锁的使用场景"><a href="#公平锁与非公平锁的使用场景" class="headerlink" title="公平锁与非公平锁的使用场景"></a>公平锁与非公平锁的使用场景</h3><p>公平锁与非公平锁的使用，还是从系统的需求进行考虑。</p>
+<ul>
+<li>需要<code>FCFS</code>或者要求服务均衡的系统，应该使用公平锁。</li>
+<li>对性能要求高的系统，应该使用非公平锁。</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://blog.csdn.net/zmx729618/article/details/51593666" target="_blank" rel="noopener">ReentrantLock之公平锁与非公平锁浅析</a></li>
+<li><a href="https://segmentfault.com/q/1010000006439146" target="_blank" rel="noopener">公平锁和非公平锁的区别?</a></li>
+</ul>
+<h2 id="可重入锁与不可重入锁"><a href="#可重入锁与不可重入锁" class="headerlink" title="可重入锁与不可重入锁"></a>可重入锁与不可重入锁</h2><p>可重入锁是指该锁允许一个线程在<strong>已经获得该锁的情况下，再次获得该锁</strong>。可重入锁亦称为可递归锁。</p>
+<ul>
+<li><code>ReentrantLock</code>，名字就可以看出是一个可重入锁——<code>Re-entrant-Lock</code>重新进入锁。</li>
+<li><code>synchronized</code>也是一个可重入锁。</li>
+</ul>
+<p>比如自旋锁就是一种不可重入锁。<br>可重入锁的一个好处是可一定<strong>程度避免死锁</strong>。</p>
+<h2 id="独占锁和共享锁"><a href="#独占锁和共享锁" class="headerlink" title="独占锁和共享锁"></a>独占锁和共享锁</h2><p>根据锁是否能够<strong>同时被多个线程持有</strong>，可以将锁分为独占锁和共享锁。</p>
+<ul>
+<li><code>ReentrantLock</code>和<code>synchronized</code>是<strong>独享锁</strong>。</li>
+<li><code>ReentrantReadWriteLock</code>，其<strong>读锁是共享锁</strong>，其<strong>写锁是独享锁</strong>。其处于独占还是共享的状态，是由<code>AQS</code>进行调度的。</li>
+</ul>
+<p>注意：<code>ReentrantReadWriteLock</code>是<code>ReadWriteLock</code>接口的实现类，<code>ReentrantLock</code>是<code>Lock</code>的实现类。</p>
+<h2 id="互斥锁和读写锁"><a href="#互斥锁和读写锁" class="headerlink" title="互斥锁和读写锁"></a>互斥锁和读写锁</h2><p>一般而言，<code>ReentrantLock</code>被俗称为互斥锁，<code>ReentrantReadWriteLock</code>俗称为读写锁。</p>
+<h2 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h2><p>乐观锁与悲观锁指<strong>看待并发的角度</strong>。</p>
+<ul>
+<li>乐观锁乐观地认为并发量没有那么大，保证同步的方式是<strong>尝试</strong>而不是阻塞。</li>
+<li>悲观锁悲观地认为并发量很大，保证同步的方式是<strong>阻塞</strong>，认为不阻塞的并发操作一定会出问题。</li>
+</ul>
+<p>Java中各种锁的使用，就是悲观锁的体现。<br>Java中java.util.concurrent.atomic包下的各种类，使用的的CAS算法，就是使用乐观锁的体现。我们自己也可以调用<code>Unsafe</code>类或者<code>AtomicStampedReference</code>类实现自己的乐观锁。</p>
+<h3 id="乐观锁和悲观锁的适用场景"><a href="#乐观锁和悲观锁的适用场景" class="headerlink" title="乐观锁和悲观锁的适用场景"></a>乐观锁和悲观锁的适用场景</h3><ul>
+<li>乐观锁适合<strong>读操作</strong>非常多、<strong>并发量较小</strong>的场景，此时不加锁会带来大量的性能提升。</li>
+<li>悲观锁适合<strong>写操作</strong>非常多、<strong>并发量较大</strong>的场景，此时加锁的性能更优。</li>
+</ul>
+<h2 id="分段锁"><a href="#分段锁" class="headerlink" title="分段锁"></a>分段锁</h2><p>分段锁是一种<strong>锁的设计思想</strong>，在<code>ConcurrentHashMap</code>中体现得淋漓尽致，不管是JDK 1.7的<code>Segment</code>还是JDK 1.8的对<code>Node[]数组</code>的元素直接加锁。<br>分段锁的设计目的是<strong>细化锁的粒度，提高并发量</strong>。</p>
+<h2 id="synchronized的锁升级机制——偏向锁、轻量级锁、重量级锁"><a href="#synchronized的锁升级机制——偏向锁、轻量级锁、重量级锁" class="headerlink" title="synchronized的锁升级机制——偏向锁、轻量级锁、重量级锁"></a>synchronized的锁升级机制——偏向锁、轻量级锁、重量级锁</h2><p>针对<code>synchronized</code>，JVM进行了优化，在保证同步的同时减小了开销、提高了并发量，在JDK 1.5 中引入了锁升级的机制来实现高效的<code>synchronized</code>。<br>我们知道，<code>synchronized</code>关键字是对某个对象加锁，也即该对象就是一个锁。因此，<strong>锁的状态</strong>被记录在该对象的<strong>对象头的相应字段中。</strong><br><code>synchronized</code>锁的升级，分为<strong>3个阶段</strong>——偏向锁、轻量级锁、重量级锁。</p>
+<h3 id="第一阶段——偏向锁"><a href="#第一阶段——偏向锁" class="headerlink" title="第一阶段——偏向锁"></a>第一阶段——偏向锁</h3><p>当某个锁频繁地被某个线程持有、释放、持有、释放时，则该线程会自动地被“偏向”而获得该锁，以消除频繁获取和释放锁的开销，这种锁称为<strong>偏向锁</strong>。<br>被<code>synchronized</code>标记的锁对象，在<strong>初始状态</strong>下，就是偏向锁。</p>
+<h3 id="第二阶段——轻量级锁"><a href="#第二阶段——轻量级锁" class="headerlink" title="第二阶段——轻量级锁"></a>第二阶段——轻量级锁</h3><p>一旦锁对象被其他的线程持有，偏向锁就会升级为轻量级锁。此时，其他申请该锁的线程是通过<strong>自旋</strong>的形式尝试获取锁，不会阻塞，在并发量较低的时候提高性能、减少开销。</p>
+<h3 id="第三阶段——重量级锁"><a href="#第三阶段——重量级锁" class="headerlink" title="第三阶段——重量级锁"></a>第三阶段——重量级锁</h3><p>当锁为轻量级锁的时候，等待锁的线程虽然是自旋，但并不会一直自旋下去。<strong>当自旋一定次数的时候，如果还没有获得锁，此时认为并发量较大，就会进入阻塞。</strong><br>此时，该锁对象<strong>膨胀</strong>为重量级锁，所有等待该锁、申请该锁的线程进入都会进入阻塞状态。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/04/06/changshayueyang/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Chao Zhang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        398187439@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Chao Zhang's way
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
