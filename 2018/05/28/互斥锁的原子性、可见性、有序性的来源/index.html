@@ -10,7 +10,7 @@
     
     <title>
         
-            互斥锁的原子性、可见性、有序性是从哪里来的？ | 
+            互斥锁的原子性、可见性、有序性的来源 | 
         
         Chao Zhang&#39;s way
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Chao Zhang">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Java并发编程">
+    <meta name="keywords" content="null,并发编程">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="互斥锁的原子性、可见性、有序性是从哪里来的？ | Chao Zhang&#39;s way">
+    <meta property="og:title" content="互斥锁的原子性、可见性、有序性的来源 | Chao Zhang&#39;s way">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Java并发编程"> 
+    <meta property="og:article:tag" content="并发编程"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -271,7 +271,7 @@
         
     
             <p class="article-headline-p">
-                互斥锁的原子性、可见性、有序性是从哪里来的？
+                互斥锁的原子性、可见性、有序性的来源
             </p>
         </div>
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Java并发编程/">Java并发编程</a>
+        <a class="post_tag-link" href="/tags/并发编程/">并发编程</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=互斥锁的原子性、可见性、有序性是从哪里来的？&url=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性是从哪里来的？/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=互斥锁的原子性、可见性、有序性的来源&url=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性的来源/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=互斥锁的原子性、可见性、有序性是从哪里来的？&url=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性是从哪里来的？/index.html&via=Chao Zhang" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=互斥锁的原子性、可见性、有序性的来源&url=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性的来源/index.html&via=Chao Zhang" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性是从哪里来的？/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性的来源/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性是从哪里来的？/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/05/28/互斥锁的原子性、可见性、有序性的来源/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -410,11 +410,18 @@
 <li>在写volatile变量的时候，只是保证了这条写指令之前的指令不会被重排序到这条指令之后；</li>
 <li>在读volatile变量的时候，只是保证了这条读指令之后的指令不会被重排序到这条指令之后。</li>
 </ul>
-<p>那么，<strong>有序性的第一个条件</strong>——一个“不会外溢”的区域——还是满足的。但是，这个区域的一端是这个指令，另一端就是这个方法的开头处或者结尾处了。指令不会溢出到方法的外面，也不会溢出到内存屏障的外面，于是区域就形成了。可以把这个区域想象成一个半开放的区间：<code>(-∞, x]</code>或者<code>[x,+∞)</code>。<br>怎么保证有序性的<strong>第二个条件</strong>呢？<br>答案是：仅凭着volatile在语言层面的语义，是没有办法保证的，我们必须自己去实现。<br>比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> a, b, c;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> ready = <span class="keyword">false</span>;</span><br><span class="line">fun1() &#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">    ready = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun2() &#123;</span><br><span class="line">    <span class="keyword">while</span>(ready) &#123;</span><br><span class="line">        d = a + b + c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只要满足了有序性的三个条件，有序性就被实现了。</p>
+<ol>
+<li><strong>有序性的第一个条件</strong>——一个“不会外溢”的区域——还是满足的。但是，这个区域的一端是这个指令，另一端就是这个方法的开头处或者结尾处了。指令不会溢出到方法的外面，也不会溢出到内存屏障的外面，于是区域就形成了。可以把这个区域想象成一个半开放的区间：<code>(-∞, x]</code>或者<code>[x,+∞)</code>。</li>
+<li>有序性的<strong>第二个条件</strong>如何实现？<br>答案是：仅凭着volatile在语言层面的语义，是没有办法保证的，我们必须自己去实现。<br>比如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> a, b, c;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> ready = <span class="keyword">false</span>;</span><br><span class="line">fun1() &#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">    ready = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun2() &#123;</span><br><span class="line">    <span class="keyword">while</span>(ready) &#123;</span><br><span class="line">        d = a + b + c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
-<li>像上述的代码代码而言，执行<code>fun1</code>的线程怎么与执行<code>fun2</code>的线程互斥呢？<br>答案是：在<code>fun2</code>中<strong>忙等待</strong>。<br>这其实和锁的释放很相似，都是在等待某种资源的释放——不管是互斥锁还是ready变量的值变为false。只不过，使用互斥锁机制的时候，这个互斥访问的过程不需要我们去管。而这里，我们通过自己实现了一个忙等待的机制而实现了互斥。</li>
+<li>像上述的代码代码而言，执行<code>fun1</code>的线程怎么与执行<code>fun2</code>的线程互斥呢？<br>答案是：在<code>fun2</code>中<strong>忙等待</strong>。<br>这其实和锁的释放很相似，<strong>都是在等待某种资源的释放</strong>——不管是等待互斥锁还是等待ready变量的值变为false。只不过，使用互斥锁机制的时候，这个互斥访问的过程不需要我们去管。而这里，我们通过自己实现了一个忙等待的机制而实现了互斥。</li>
 </ul>
-<p>有序性的<strong>第三个条件</strong>呢？<br>这里，可见性也是由我们自己去实现的。因为volatile变量的写具有存储屏障（清空写缓冲器）、读操作具有加载屏障（清空无效化队列），所以我们只需要在写共享变量之后写volatile变量、读共享变量之前读volatile变量，我们就能够实现可见性。而互斥锁的可见性，随着获得锁和释放锁的操作中的加载屏障、存储屏障就实现了，也不需要我们去管。</p>
+<ol start="3">
+<li>有序性的<strong>第三个条件</strong>如何实现？<br>这里，可见性也是由我们自己去实现的。因为volatile变量的写具有存储屏障（清空写缓冲器）、读操作具有加载屏障（清空无效化队列），所以我们只需要在写共享变量之后写volatile变量、读共享变量之前读volatile变量，我们就能够实现可见性。而互斥锁的可见性，随着获得锁和释放锁的操作中的加载屏障、存储屏障就实现了，也不需要我们去管。</li>
+</ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用volatile变量，只要我们满足了有序性的三个条件，是可以实现和互斥锁一样的有序性效果的。进一步地，我们可以说，只要实现了有序性，其实也就实现了线程同步，也就实现了狭义上的线程安全了。总而言之，有序性是由原子性和可见性，外加内存屏障共同实现的，不管这些原子性、可见性、甚至是内存屏障到底是JVM实现的还是程序员手动实现的。</p>
 
     
