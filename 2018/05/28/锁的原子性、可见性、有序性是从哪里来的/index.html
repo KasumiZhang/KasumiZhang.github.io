@@ -10,7 +10,7 @@
     
     <title>
         
-            谈美丑 | 
+            互斥锁的原子性、可见性、有序性是从哪里来的？ | 
         
         Chao Zhang&#39;s way
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Chao Zhang">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,杂谈">
+    <meta name="keywords" content="null">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="谈美丑 | Chao Zhang&#39;s way">
+    <meta property="og:title" content="互斥锁的原子性、可见性、有序性是从哪里来的？ | Chao Zhang&#39;s way">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="杂谈"> 
+    
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -211,6 +211,41 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#互斥锁的原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">互斥锁的原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#互斥锁的原子性、可见性、有序性从哪来？"><span class="post-toc-number">2.</span> <span class="post-toc-text">互斥锁的原子性、可见性、有序性从哪来？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原子性的来源"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">原子性的来源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可见性的来源"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">可见性的来源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有序性的来源"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">有序性的来源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#互斥锁对于重排序的限制"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">互斥锁对于重排序的限制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是有序性？"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">什么是有序性？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#锁的有序性究竟从哪里来呢？"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">锁的有序性究竟从哪里来呢？</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#思考：如何获得有序性？"><span class="post-toc-number">3.</span> <span class="post-toc-text">思考：如何获得有序性？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用volatile变量获取操作的有序性"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">使用volatile变量获取操作的有序性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
@@ -224,11 +259,19 @@
                 
     <!-- Paradox Post Header -->
     
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/标题图片汇总/谈美丑.jpg)">
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
     
             <p class="article-headline-p">
-                谈美丑
+                互斥锁的原子性、可见性、有序性是从哪里来的？
             </p>
         </div>
 
@@ -247,7 +290,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Chao Zhang</strong>
-        <span>4月 29, 2018</span>
+        <span>5月 28, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -271,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/杂谈/">杂谈</a>
+        
     </ul>
     
 
@@ -287,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=谈美丑&url=http://yoursite.com//2018/04/29/谈美丑/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=互斥锁的原子性、可见性、有序性是从哪里来的？&url=http://yoursite.com//2018/05/28/锁的原子性、可见性、有序性是从哪里来的/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -296,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=谈美丑&url=http://yoursite.com//2018/04/29/谈美丑/index.html&via=Chao Zhang" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=互斥锁的原子性、可见性、有序性是从哪里来的？&url=http://yoursite.com//2018/05/28/锁的原子性、可见性、有序性是从哪里来的/index.html&via=Chao Zhang" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -305,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/04/29/谈美丑/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2018/05/28/锁的原子性、可见性、有序性是从哪里来的/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -314,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/04/29/谈美丑/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2018/05/28/锁的原子性、可见性、有序性是从哪里来的/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -338,7 +381,40 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>我意识到，<br>美与丑，<br>与永恒有关。<br>美因其永恒而美，<br>丑亦因其永恒而丑。<br>年轻时候暗恋过的姑娘，<br>是安详美梦中永恒的常客。<br>年轻时候厌恶过的嘴脸，<br>是午夜梦回时永恒的悸慴。<br>永恒的美丑，<br>构成了永恒的生命。<br>永恒的你，<br>从此再无法改变。</p>
+        <h1 id="互斥锁的原理"><a href="#互斥锁的原理" class="headerlink" title="互斥锁的原理"></a>互斥锁的原理</h1><ul>
+<li>临界区的起始位置，由<code>MonitorEnter字节码</code>+<code>获取屏障</code>+<code>加载屏障</code>组成。</li>
+<li>临界区的结束为止，由<code>释放屏障</code>+<code>MonitorExit字节码</code>+<code>存储屏障</code>组成。</li>
+</ul>
+<h1 id="互斥锁的原子性、可见性、有序性从哪来？"><a href="#互斥锁的原子性、可见性、有序性从哪来？" class="headerlink" title="互斥锁的原子性、可见性、有序性从哪来？"></a>互斥锁的原子性、可见性、有序性从哪来？</h1><h2 id="原子性的来源"><a href="#原子性的来源" class="headerlink" title="原子性的来源"></a>原子性的来源</h2><p><strong>锁的原子性由<code>MonitorEnter字节码</code>的</strong>互斥性<strong>保证。</strong><br>当某个线程占有某个对象锁的时候，若该线程没有执行<code>MonitorExit字节码</code>指令，则其他执行了<code>MonitorEnter字节码</code>的申请线程会被阻塞。这就保证了临界区在某一时刻只可能被一个线程访问，也就保证了原子性。</p>
+<h2 id="可见性的来源"><a href="#可见性的来源" class="headerlink" title="可见性的来源"></a>可见性的来源</h2><p><strong>锁的可见性由<code>加载屏障</code>和<code>存储屏障</code>共同保证。</strong></p>
+<ul>
+<li>在获取锁的时候，<code>加载屏障</code>保证了锁的持有线程一定能够“看到”其他线程对共享变量的修改。</li>
+<li>在释放锁的时候，<code>存储屏障</code>保证了锁的持有线程对临界区内共享变量的更新一定能够被后续的所有线程感知。<h2 id="有序性的来源"><a href="#有序性的来源" class="headerlink" title="有序性的来源"></a>有序性的来源</h2><h3 id="互斥锁对于重排序的限制"><a href="#互斥锁对于重排序的限制" class="headerlink" title="互斥锁对于重排序的限制"></a>互斥锁对于重排序的限制</h3>临界区的范围限制由<code>获取屏障</code>和<code>释放屏障</code>共同保证。<br><code>获取屏障</code>是由<code>LoadStore</code>+<code>LoadLoad</code>内存屏障（一种汇编指令）组合而成。<code>获取屏障</code>是由<code>StoreStore</code>+<code>LoadStore</code>内存屏障组合而成。它们共同组合成了如下的效果：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【获取屏障】LoadStore + LoadLoad <span class="comment">//这之后的Store和Load操作都不能重排序到这条指令之前。</span></span><br><span class="line"><span class="comment">/* 临界区 */</span></span><br><span class="line">【释放屏障】StoreStore + LoadStore <span class="comment">//这之前的Store和Load操作都不能重排序到这条指令之后。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="什么是有序性？"><a href="#什么是有序性？" class="headerlink" title="什么是有序性？"></a>什么是有序性？</h3><p><strong>有序性不是不重排序，而是把重排序的影响控制在一个比较小的范围之内。</strong>当某个线程处于在这个<code>允许重排序的范围</code>之内，我们不允许其他线程来感知（读取）这些共享变量。当这个线程<strong>离开了</strong>这个允许重排序的范围以后，其他线程才被允许来感知这些共享变量。<br>因此，就上述的锁对内存屏障的使用而言，它只是保证了临界区内的指令不能被重排序到临界区之外，但是并没有限制临界区内的重排序。所以，对于其他的线程而言，如果此时被允许感知共享变量，则有可能还是乱序的。也就是说，内存屏障并没有从根本上解决锁的有序性问题。</p>
+<h3 id="锁的有序性究竟从哪里来呢？"><a href="#锁的有序性究竟从哪里来呢？" class="headerlink" title="锁的有序性究竟从哪里来呢？"></a>锁的有序性究竟从哪里来呢？</h3><p>答案是：由<code>MonitorEnter字节码</code>的互斥性与内存屏障的<strong>联合作用</strong>获得。换句话说，互斥锁的有序性由它的<strong>原子性和临界区不外溢性</strong>共同作用而获得。</p>
+<ul>
+<li>内存屏障保证了临界区内的指令不会被重排序到临界区外，并且临界区内指令对共享变量所做的修改对于后续线程而言是可见的。这保证了临界区的代码不会外溢，像夹心饼干一样。但是，临界区内的指令依然可能被重排序。</li>
+<li><code>MonitorEnter字节码</code>的互斥性，保证了临界区一次只能够被一次线程访问。其他线程<strong>并无法感知到</strong>临界区内的指令被重排序了。在这些线程看来，临界区内的指令，好像就是按照原本程序顺序执行一样。或者说，其他线程根本不关心临界区内的指令是否被重排序了，<strong>索性</strong>就将它们看作有序的好了。<h1 id="思考：如何获得有序性？"><a href="#思考：如何获得有序性？" class="headerlink" title="思考：如何获得有序性？"></a>思考：如何获得有序性？</h1>由上面的分析可知，要使得一个操作（比如一个方法或者一系列的指令）<strong>获得有序性</strong>，必须满足以下的两个条件：</li>
+</ul>
+<ol>
+<li><strong>一个不会“指令外溢”的区域</strong><br>一个被限制的区域，该区域内的指令不允许被重排序到该区域的外部。这通常由内存屏障所保障。</li>
+<li><strong>对区域操作的原子性</strong><br>这个被限制了的区域具有访问的原子性，不管保证原子性的方式是什么（互斥、忙等待）。</li>
+<li><strong>进入和离开区域时的可见性</strong><br>在进入这个区域的时候，保证看得见之前其他线程对共享变量所做的所有操作。在离开这个区域的时候，保证当前线程对共享变量的操作对其他线程可见。</li>
+</ol>
+<p>因此，我们得出<strong>有序性的实现原理</strong>：<br><code>有序性=内存屏障+原子性+可见性</code><br>就比如互斥锁的有序性，就是由<code>内存屏障括起来的指令区域</code>+<code>互斥性带来的原子性</code>+<code>加载、存储屏障带来的可见性</code>实现的。<br>那么如何使用volatile变量获取操作的“有序性”？</p>
+<h2 id="使用volatile变量获取操作的有序性"><a href="#使用volatile变量获取操作的有序性" class="headerlink" title="使用volatile变量获取操作的有序性"></a>使用volatile变量获取操作的有序性</h2><p>因为<code>volatile变量</code>可以被理解为<strong>“半边”的互斥锁</strong>，所以单独的读、写volatile变量的指令所划分的对重排序限制的区域范围也是“折半”的：</p>
+<ul>
+<li>在写volatile变量的时候，只是保证了这条写指令之前的指令不会被重排序到这条指令之后；</li>
+<li>在读volatile变量的时候，只是保证了这条读指令之后的指令不会被重排序到这条指令之后。</li>
+</ul>
+<p>那么，<strong>有序性的第一个条件</strong>——一个“不会外溢”的区域——还是满足的。但是，这个区域的一端是这个指令，另一端就是这个方法的开头处或者结尾处了。指令不会溢出到方法的外面，也不会溢出到内存屏障的外面，于是区域就形成了。可以把这个区域想象成一个半开放的区间：<code>(-∞, x]</code>或者<code>[x,+∞)</code>。<br>怎么保证有序性的<strong>第二个条件</strong>呢？<br>答案是：仅凭着volatile在语言层面的语义，是没有办法保证的，我们必须自己去实现。<br>比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> a, b, c;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> ready = <span class="keyword">false</span>;</span><br><span class="line">fun1() &#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    b = <span class="number">2</span>;</span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">    ready = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun2() &#123;</span><br><span class="line">    <span class="keyword">while</span>(ready) &#123;</span><br><span class="line">        d = a + b + c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>像上述的代码代码而言，执行<code>fun1</code>的线程怎么与执行<code>fun2</code>的线程互斥呢？<br>答案是：在<code>fun2</code>中<strong>忙等待</strong>。<br>这其实和锁的释放很相似，都是在等待某种资源的释放——不管是互斥锁还是ready变量的值变为false。只不过，使用互斥锁机制的时候，这个互斥访问的过程不需要我们去管。而这里，我们通过自己实现了一个忙等待的机制而实现了互斥。</li>
+</ul>
+<p>有序性的<strong>第三个条件</strong>呢？<br>这里，可见性也是由我们自己去实现的。因为volatile变量的写具有存储屏障（清空写缓冲器）、读操作具有加载屏障（清空无效化队列），所以我们只需要在写共享变量之后写volatile变量、读共享变量之前读volatile变量，我们就能够实现可见性。而互斥锁的可见性，随着获得锁和释放锁的操作中的加载屏障、存储屏障就实现了，也不需要我们去管。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用volatile变量，只要我们满足了有序性的三个条件，是可以实现和互斥锁一样的有序性效果的。进一步地，我们可以说，只要实现了有序性，其实也就实现了线程同步，也就实现了狭义上的线程安全了。总而言之，有序性是由原子性和可见性，外加内存屏障共同实现的，不管这些原子性、可见性、甚至是内存屏障到底是JVM实现的还是程序员手动实现的。</p>
 
     
 
@@ -365,7 +441,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/05/28/锁的原子性、可见性、有序性是从哪里来的/" id="post_nav-newer" class="prev-content">
+        <a href="/2018/05/28/互斥锁的原子性、可见性、有序性是从哪里来的？/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -379,7 +455,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/04/08/运似轻舟世间沧海/" id="post_nav-older" class="next-content">
+        <a href="/2018/04/29/谈美丑/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
